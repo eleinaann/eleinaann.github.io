@@ -408,7 +408,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .certs-heading {
   font-size: 0.82rem;
   color: var(--muted);
-  font-weight: 500;
+  font-weight: 700;
   margin-bottom: 16px;
 }
 
@@ -424,7 +424,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   flex-wrap: wrap;
 }
 
-.certs-list li span:first-child, .lang-list li span:first-child { font-weight: 500; flex: 1; min-width: 180px; }
+.certs-list li span:first-child, .lang-list li span:first-child { font-weight: 700; flex: 1; min-width: 180px; }
 .certs-org { color: var(--muted); flex: 1; min-width: 160px; }
 .certs-date, .lang-level { color: var(--muted); font-family: var(--mono); font-size: 0.82rem; }
 
