@@ -131,14 +131,6 @@ ul { margin: 0; padding: 0; list-style: none; }
   position: relative;
 }
 
-.hero-kicker {
-  font-family: var(--mono);
-  color: var(--red);
-  font-size: 0.85rem;
-  margin: 0 0 14px;
-  letter-spacing: 0.02em;
-}
-
 .hero h1 {
   font-size: clamp(2.6rem, 7vw, 4.4rem);
   font-weight: 700;
@@ -265,14 +257,21 @@ ul { margin: 0; padding: 0; list-style: none; }
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
+  gap: 24px;
+}
+
+.skill-group {
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--red);
+  background: var(--white);
+  padding: 22px 22px 26px;
 }
 
 .skill-group h3 {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   text-transform: none;
   color: var(--muted);
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: 16px;
   letter-spacing: 0.01em;
 }
@@ -285,7 +284,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   font-size: 0.86rem;
   font-family: var(--sans);
   color: var(--ink);
-  background: var(--white);
+  background: var(--paper);
 }
 
 /* Log (experience / education) */
@@ -293,7 +292,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 .log-entry {
   display: grid;
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: 1fr 200px;
   gap: 32px;
   border-top: 1px solid var(--line);
   padding-top: 28px;
@@ -302,6 +301,8 @@ ul { margin: 0; padding: 0; list-style: none; }
 .log-meta {
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
   gap: 4px;
   font-family: var(--mono);
   font-size: 0.82rem;
@@ -316,17 +317,19 @@ ul { margin: 0; padding: 0; list-style: none; }
   margin-bottom: 4px;
 }
 
-.log-org {
-  font-family: var(--sans);
-  font-weight: 400;
-  color: var(--muted);
-}
-
 .log-detail {
   font-family: var(--sans);
+  color: var(--ink);
+  font-weight: 500;
+  font-size: 0.95rem;
+  margin: 6px 0 2px;
+}
+
+.log-org-line {
+  font-family: var(--sans);
   color: var(--muted);
-  font-size: 0.92rem;
-  margin: 4px 0 12px;
+  font-size: 0.9rem;
+  margin: 0 0 14px;
 }
 
 .log-body ul { margin-top: 12px; display: flex; flex-direction: column; gap: 8px; }
@@ -406,15 +409,15 @@ ul { margin: 0; padding: 0; list-style: none; }
 .certs, .languages { margin-top: 56px; max-width: 700px; }
 
 .certs-heading {
-  font-size: 0.82rem;
-  color: var(--muted);
+  font-size: 0.95rem;
+  color: var(--ink);
   font-weight: 700;
   margin-bottom: 16px;
 }
 
-.certs-list, .lang-list { display: flex; flex-direction: column; }
+.lang-list { display: flex; flex-direction: column; }
 
-.certs-list li, .lang-list li {
+.lang-list li {
   display: flex;
   justify-content: space-between;
   gap: 16px;
@@ -424,9 +427,25 @@ ul { margin: 0; padding: 0; list-style: none; }
   flex-wrap: wrap;
 }
 
-.certs-list li span:first-child, .lang-list li span:first-child { font-weight: 700; flex: 1; min-width: 180px; }
-.certs-org { color: var(--muted); flex: 1; min-width: 160px; }
-.certs-date, .lang-level { color: var(--muted); font-family: var(--mono); font-size: 0.82rem; }
+.lang-list li span:first-child { font-weight: 500; flex: 1; min-width: 180px; }
+.lang-level { color: var(--muted); font-family: var(--mono); font-size: 0.82rem; }
+
+.certs-list { display: flex; flex-direction: column; }
+
+.certs-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+  flex-wrap: wrap;
+}
+
+.certs-info { display: flex; flex-direction: column; gap: 3px; }
+.certs-name { font-weight: 500; font-size: 0.92rem; }
+.certs-org { color: var(--muted); font-size: 0.85rem; }
+.certs-date { color: var(--muted); font-family: var(--mono); font-size: 0.82rem; white-space: nowrap; padding-top: 2px; }
 
 /* ---------- Footer ---------- */
 .footer { background: var(--black); color: var(--white); padding: 72px 24px 28px; }
