@@ -45,7 +45,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 
 .nav-inner {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 16px 24px;
   display: flex;
@@ -65,13 +65,13 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 .nav-links {
   display: flex;
-  gap: 24px;
+  gap: 20px;
   align-items: center;
 }
 
 .nav-links a {
   color: #d8d8d4;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-family: var(--sans);
   font-weight: 500;
   transition: color 0.15s ease;
@@ -220,11 +220,11 @@ ul { margin: 0; padding: 0; list-style: none; }
 .btn-ghost:hover { background: var(--red); }
 
 /* ---------- Decorative shapes ---------- */
-/* Thin line, bleeds out of the left edge and loops back in */
+/* Thin line, pinned flush to the true left edge; bleed is baked into the path (negative x start) */
 .deco-squiggle {
   position: absolute;
   top: 50%;
-  left: -18px;
+  left: 0;
   transform: translateY(-50%);
   color: var(--red);
   opacity: 0.5;
@@ -234,11 +234,11 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 .deco-squiggle.on-dark { color: var(--white); opacity: 0.35; }
 
-/* Solid organic shape, bleeds out of the right edge and loops back in */
+/* Solid organic shape, pinned flush to the true right edge; bleed is baked into the path */
 .deco-blob {
   position: absolute;
   top: 50%;
-  right: -60px;
+  right: 0;
   transform: translateY(-50%);
   color: var(--line);
   pointer-events: none;
@@ -447,32 +447,20 @@ ul { margin: 0; padding: 0; list-style: none; }
   background: var(--red);
 }
 
-/* Languages (still nested inside Education) */
-.languages { margin-top: 56px; max-width: 700px; }
-
-.certs-heading {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 0.95rem;
-  color: var(--ink);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 16px;
-}
-
-.lang-list { display: flex; flex-direction: column; }
+/* Languages */
+.lang-list { display: flex; flex-direction: column; max-width: 700px; }
 
 .lang-list li {
   display: flex;
   justify-content: space-between;
   gap: 16px;
-  padding: 12px 0;
+  padding: 16px 0;
   border-top: 1px solid var(--line);
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   flex-wrap: wrap;
 }
+
+.lang-list li:last-child { border-bottom: 1px solid var(--line); }
 
 .lang-list li span:first-child { font-weight: 500; flex: 1; min-width: 180px; }
 .lang-level { color: var(--muted); font-family: var(--mono); font-size: 0.82rem; }
