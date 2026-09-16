@@ -220,7 +220,6 @@ ul { margin: 0; padding: 0; list-style: none; }
 .btn-ghost:hover { background: var(--red); }
 
 /* ---------- Decorative shapes ---------- */
-/* Thin line, pinned flush to the true left edge; bleed is baked into the path (negative x start) */
 .deco-squiggle {
   position: absolute;
   top: 50%;
@@ -234,7 +233,19 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 .deco-squiggle.on-dark { color: var(--white); opacity: 0.35; }
 
-/* Solid organic shape, pinned flush to the true right edge; bleed is baked into the path */
+.deco-squiggle-right {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%) scaleX(-1);
+  color: var(--red);
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.deco-squiggle-right.on-dark { color: var(--white); opacity: 0.35; }
+
 .deco-blob {
   position: absolute;
   top: 50%;
@@ -247,8 +258,20 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 .deco-blob.on-dark { color: var(--white); opacity: 0.9; }
 
+.deco-blob-left {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%) scaleX(-1);
+  color: var(--line);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.deco-blob-left.on-dark { color: var(--white); opacity: 0.9; }
+
 @media (max-width: 1100px) {
-  .deco-squiggle, .deco-blob { display: none; }
+  .deco-squiggle, .deco-blob, .deco-squiggle-right, .deco-blob-left { display: none; }
 }
 
 /* ---------- Sections ---------- */
@@ -359,19 +382,16 @@ ul { margin: 0; padding: 0; list-style: none; }
   margin-bottom: 4px;
 }
 
-.log-detail {
-  font-family: var(--sans);
-  color: var(--ink);
-  font-weight: 500;
-  font-size: 0.95rem;
-  margin: 6px 0 2px;
-}
-
 .log-org-line {
   font-family: var(--sans);
   color: var(--muted);
   font-size: 0.9rem;
   margin: 0 0 14px;
+}
+
+.log-detail-inline {
+  color: var(--ink);
+  font-weight: 500;
 }
 
 .log-body ul { margin-top: 12px; display: flex; flex-direction: column; gap: 8px; }
@@ -385,9 +405,10 @@ ul { margin: 0; padding: 0; list-style: none; }
   content: "";
   position: absolute;
   left: 0;
-  top: 9px;
-  width: 6px;
-  height: 1px;
+  top: 8px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
   background: var(--red);
 }
 
@@ -441,9 +462,10 @@ ul { margin: 0; padding: 0; list-style: none; }
   content: "";
   position: absolute;
   left: 0;
-  top: 9px;
-  width: 6px;
-  height: 1px;
+  top: 8px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
   background: var(--red);
 }
 
