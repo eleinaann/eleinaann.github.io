@@ -65,16 +65,17 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 .nav-links {
   display: flex;
-  gap: 28px;
+  gap: 24px;
   align-items: center;
 }
 
 .nav-links a {
   color: #d8d8d4;
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   font-family: var(--sans);
   font-weight: 500;
   transition: color 0.15s ease;
+  white-space: nowrap;
 }
 
 .nav-links a:hover { color: var(--white); }
@@ -218,26 +219,36 @@ ul { margin: 0; padding: 0; list-style: none; }
 .btn-ghost { color: var(--white); }
 .btn-ghost:hover { background: var(--red); }
 
-/* ---------- Decorative squiggles ---------- */
-.deco {
+/* ---------- Decorative shapes ---------- */
+/* Thin line, bleeds out of the left edge and loops back in */
+.deco-squiggle {
   position: absolute;
   top: 50%;
+  left: -18px;
   transform: translateY(-50%);
   color: var(--red);
-  opacity: 0.28;
+  opacity: 0.5;
   pointer-events: none;
   z-index: 0;
 }
 
-.deco-right { transform: translateY(-50%) scaleX(-1); }
+.deco-squiggle.on-dark { color: var(--white); opacity: 0.35; }
 
-.deco.on-dark { color: var(--white); opacity: 0.14; }
+/* Solid organic shape, bleeds out of the right edge and loops back in */
+.deco-blob {
+  position: absolute;
+  top: 50%;
+  right: -60px;
+  transform: translateY(-50%);
+  color: var(--line);
+  pointer-events: none;
+  z-index: 0;
+}
 
-.deco-left { left: 18px; }
-.deco-right { right: 18px; }
+.deco-blob.on-dark { color: var(--white); opacity: 0.9; }
 
-@media (max-width: 1200px) {
-  .deco { display: none; }
+@media (max-width: 1100px) {
+  .deco-squiggle, .deco-blob { display: none; }
 }
 
 /* ---------- Sections ---------- */
@@ -292,7 +303,6 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 .skill-group h3 {
   font-size: 0.8rem;
-  text-transform: none;
   color: var(--muted);
   font-weight: 600;
   margin-bottom: 16px;
@@ -300,30 +310,26 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 
 .tag-list {
-  display: flex;
-  flex-direction: column;
-  gap: 11px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+  gap: 8px;
 }
 
 .tag-list li {
-  position: relative;
-  padding-left: 18px;
-  font-size: 0.92rem;
-  font-family: var(--sans);
-  color: #33322f;
+  border-left: 2px solid var(--red);
+  background: var(--paper);
+  padding: 9px 10px;
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  min-height: 38px;
+  line-height: 1.25;
 }
 
-.tag-list li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 9px;
-  width: 6px;
-  height: 1px;
-  background: var(--red);
-}
-
-/* Log (experience / education) */
+/* Log (experience / education / certifications) */
 .log { display: flex; flex-direction: column; gap: 40px; }
 
 .log-entry {
@@ -441,8 +447,8 @@ ul { margin: 0; padding: 0; list-style: none; }
   background: var(--red);
 }
 
-/* Certs & languages */
-.certs, .languages { margin-top: 56px; max-width: 700px; }
+/* Languages (still nested inside Education) */
+.languages { margin-top: 56px; max-width: 700px; }
 
 .certs-heading {
   display: flex;
@@ -470,23 +476,6 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 .lang-list li span:first-child { font-weight: 500; flex: 1; min-width: 180px; }
 .lang-level { color: var(--muted); font-family: var(--mono); font-size: 0.82rem; }
-
-.certs-list { display: flex; flex-direction: column; }
-
-.certs-list li {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 16px;
-  padding: 14px 0;
-  border-top: 1px solid var(--line);
-  flex-wrap: wrap;
-}
-
-.certs-info { display: flex; flex-direction: column; gap: 3px; }
-.certs-name { font-weight: 500; font-size: 0.92rem; }
-.certs-org { color: var(--muted); font-size: 0.85rem; }
-.certs-date { color: var(--muted); font-family: var(--mono); font-size: 0.82rem; white-space: nowrap; padding-top: 2px; }
 
 /* ---------- Footer ---------- */
 .footer { background: var(--black); color: var(--white); padding: 72px 24px 28px; position: relative; overflow: hidden; }
