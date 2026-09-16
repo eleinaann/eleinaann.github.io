@@ -20,7 +20,7 @@ body {
   margin: 0;
   font-family: var(--sans);
   color: var(--ink);
-  background: var(--red-dark);
+  background: var(--white);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
