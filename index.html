@@ -1,598 +1,441 @@
-/* ---------- Tokens ---------- */
-:root {
-  --black: #181717;
-  --white: #ffffff;
-  --cream: #edebdd;
-  --cream-alt: #f6f4ea;
-  --ink: #1f1c1a;
-  --muted: #6f6a5e;
-  --red: #810100;
-  --red-dark: #630000;
-  --red-glow: rgba(129, 1, 0, 0.18);
-  --red-glow-soft: rgba(129, 1, 0, 0.10);
-  --line: #ddd8c6;
-  --mono: 'JetBrains Mono', ui-monospace, monospace;
-  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --max: 780px;
-}
-
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-
-body {
-  margin: 0;
-  font-family: var(--sans);
-  color: var(--ink);
-  background: var(--cream);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
-
-h1, h2, h3 { font-family: var(--mono); margin: 0; line-height: 1.15; }
-
-a { color: inherit; text-decoration: none; }
-
-ul { margin: 0; padding: 0; list-style: none; }
-
-@media (prefers-reduced-motion: reduce) {
-  * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
-}
-
-/* ---------- Nav ---------- */
-#site-nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(24, 23, 23, 0.94);
-  backdrop-filter: blur(6px);
-  border-bottom: 2px solid var(--red);
-}
-
-.nav-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 16px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.nav-mark {
-  font-family: var(--mono);
-  font-weight: 700;
-  font-size: 0.95rem;
-  color: var(--cream);
-  background: var(--red);
-  border: 1px solid var(--red);
-  padding: 4px 9px;
-  letter-spacing: 0.02em;
-}
-
-.nav-links {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
-
-.nav-links a {
-  color: #d8d2c2;
-  font-size: 0.88rem;
-  font-family: var(--sans);
-  font-weight: 600;
-  transition: color 0.15s ease;
-  white-space: nowrap;
-}
-
-.nav-links a:hover { color: var(--red); }
-
-.nav-links .nav-cta {
-  color: var(--cream);
-  background: var(--red);
-  border: 1px solid var(--red);
-  padding: 6px 14px;
-}
-
-.nav-links .nav-cta:hover { background: var(--red-dark); border-color: var(--red-dark); }
-
-#nav-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 6px;
-}
-
-#nav-toggle span {
-  width: 22px;
-  height: 2px;
-  background: var(--cream);
-  display: block;
-}
-
-/* ---------- Hero (stays dark for bookend contrast) ---------- */
-.hero {
-  background: var(--black);
-  color: var(--cream);
-  padding: 96px 24px 72px;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(to right, rgba(129,1,0,0.18) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(129,1,0,0.18) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: linear-gradient(to bottom, black, transparent 85%);
-  pointer-events: none;
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  top: -120px;
-  right: -120px;
-  width: 480px;
-  height: 480px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, var(--red) 0%, var(--red-dark) 45%, transparent 72%);
-  opacity: 0.55;
-  filter: blur(2px);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.hero-inner {
-  max-width: 780px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-}
-
-.hero h1 {
-  font-size: clamp(2.6rem, 7vw, 4.4rem);
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  color: var(--cream);
-}
-
-.hero-role {
-  font-family: var(--sans);
-  font-size: clamp(1.05rem, 2.4vw, 1.3rem);
-  color: var(--red);
-  margin: 10px 0 40px;
-  font-weight: 700;
-}
-
-.terminal {
-  background: #1e1a19;
-  border: 1px solid var(--red-dark);
-  max-width: 560px;
-  margin-bottom: 40px;
-  position: relative;
-  z-index: 1;
-}
-
-.terminal-bar {
-  display: flex;
-  gap: 6px;
-  padding: 10px 12px;
-  border-bottom: 1px solid #332622;
-}
-
-.terminal-bar .dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--red-dark);
-}
-
-.terminal-body {
-  padding: 16px 18px 20px;
-  font-family: var(--mono);
-  font-size: 0.86rem;
-  min-height: 148px;
-}
-
-.line { margin: 0 0 8px; opacity: 0; }
-.line.shown { opacity: 1; }
-
-.line[data-type="prompt"]::before {
-  content: "> ";
-  color: var(--red);
-}
-
-.line[data-type="output"] { color: #cfc7b8; padding-left: 14px; }
-
-.cursor-line { display: flex; align-items: center; gap: 4px; }
-.prompt-glyph { color: var(--red); }
-
-.cursor {
-  display: inline-block;
-  width: 7px;
-  height: 14px;
-  background: var(--red);
-  animation: blink 1s step-start infinite;
-}
-
-@keyframes blink { 50% { opacity: 0; } }
-
-.hero-actions {
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-  position: relative;
-  z-index: 1;
-}
-
-.btn {
-  font-family: var(--mono);
-  font-size: 0.88rem;
-  padding: 12px 22px;
-  border: 1px solid var(--red);
-  display: inline-block;
-  transition: background 0.15s ease, color 0.15s ease;
-}
-
-.btn-primary { background: var(--red); color: var(--cream); }
-.btn-primary:hover { background: var(--red-dark); border-color: var(--red-dark); }
-
-.btn-ghost { color: var(--cream); }
-.btn-ghost:hover { background: var(--red); }
-
-/* ---------- Decorative shapes ---------- */
-/* Squiggles: white on dark hero/footer, black elsewhere */
-.deco-squiggle,
-.deco-squiggle-right {
-  color: var(--black);
-  opacity: 0.35;
-  position: absolute;
-  top: 50%;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.deco-squiggle.on-dark,
-.deco-squiggle-right.on-dark {
-  color: var(--white);
-  opacity: 0.4;
-}
-
-.deco-squiggle { left: 0; transform: translateY(-50%); }
-.deco-squiggle-right { right: 0; transform: translateY(-50%) scaleX(-1); }
-
-/* Blobs: always red, everywhere */
-.deco-blob,
-.deco-blob-left {
-  color: var(--red);
-  opacity: 0.16;
-  position: absolute;
-  top: 50%;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.deco-blob.on-dark,
-.deco-blob-left.on-dark {
-  opacity: 0.4;
-}
-
-.deco-blob { right: 0; transform: translateY(-50%); }
-.deco-blob-left { left: 0; transform: translateY(-50%) scaleX(-1); }
-
-@media (max-width: 1100px) {
-  .deco-squiggle, .deco-blob, .deco-squiggle-right, .deco-blob-left { display: none; }
-}
-
-/* ---------- Sections (light now) ---------- */
-.section { padding: 88px 24px; position: relative; overflow: hidden; background: var(--cream); }
-.section.alt { background: var(--cream-alt); }
-
-.section-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; }
-
-.section-head {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 44px;
-}
-
-.tag-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--red);
-  box-shadow: 0 0 0 5px var(--red-glow-soft);
-  flex-shrink: 0;
-}
-
-.section h2 { font-size: 1.55rem; font-weight: 600; color: var(--ink); }
-
-/* About */
-.two-col {
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 40px;
-  max-width: 1000px;
-}
-
-.col-label { display: flex; align-items: center; gap: 12px; }
-
-.col-body { max-width: var(--max); }
-.col-body p { margin: 0 0 18px; color: #33302a; }
-.col-body p:last-child { margin-bottom: 0; }
-
-/* Skills */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.skill-group {
-  border: 1px solid var(--line);
-  border-top: 4px solid var(--red);
-  background: var(--white);
-  padding: 22px 22px 26px;
-  transition: box-shadow 0.15s ease, border-color 0.15s ease;
-}
-
-.skill-group:hover { box-shadow: 0 8px 24px var(--red-glow-soft); border-color: var(--red); }
-
-.skill-group h3 {
-  font-size: 0.8rem;
-  color: var(--red);
-  font-weight: 700;
-  margin-bottom: 16px;
-  letter-spacing: 0.01em;
-  text-transform: uppercase;
-}
-
-.tag-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
-  gap: 8px;
-}
-
-.tag-list li {
-  border-left: 3px solid var(--red);
-  background: var(--cream);
-  padding: 9px 10px;
-  font-family: var(--mono);
-  font-size: 0.74rem;
-  letter-spacing: 0.01em;
-  color: var(--ink);
-  display: flex;
-  align-items: center;
-  min-height: 38px;
-  line-height: 1.25;
-  transition: background 0.15s ease, color 0.15s ease;
-}
-
-.tag-list li:hover { background: var(--red); color: var(--cream); border-left-color: var(--red-dark); }
-
-/* Log (experience / education / certifications) */
-.log { display: flex; flex-direction: column; gap: 40px; }
-
-.log-entry {
-  display: grid;
-  grid-template-columns: 1fr 200px;
-  gap: 32px;
-  border-top: 2px solid var(--red);
-  padding-top: 28px;
-}
-
-.log-meta {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  text-align: right;
-  gap: 4px;
-  font-family: var(--mono);
-  font-size: 0.82rem;
-}
-
-.log-date { color: var(--red); font-weight: 700; }
-.log-loc { color: var(--muted); }
-
-.log-body h3 {
-  font-size: 1.08rem;
-  font-weight: 600;
-  margin-bottom: 4px;
-  color: var(--ink);
-}
-
-.log-org-line {
-  font-family: var(--sans);
-  color: var(--muted);
-  font-size: 0.9rem;
-  margin: 0 0 14px;
-}
-
-.log-detail-inline {
-  color: var(--red);
-  font-weight: 700;
-}
-
-.log-body ul { margin-top: 12px; display: flex; flex-direction: column; gap: 8px; }
-.log-body li {
-  position: relative;
-  padding-left: 18px;
-  font-size: 0.95rem;
-  color: #33302a;
-}
-.log-body li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 8px;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--red);
-}
-
-/* Projects */
-.projects { display: flex; flex-direction: column; gap: 2px; background: var(--red); }
-
-.project { background: var(--white); border-left: 4px solid var(--line); transition: border-color 0.15s ease, background 0.15s ease; }
-.project[data-open="true"] { border-left-color: var(--red); background: linear-gradient(90deg, var(--red-glow-soft), var(--white) 40%); }
-
-.project-toggle {
-  width: 100%;
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 24px 28px;
-  text-align: left;
-  font-family: inherit;
-}
-
-.project-toggle:hover .project-icon { color: var(--red-dark); }
-
-.project-head h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: 6px; color: var(--ink); }
-.project-sub { font-family: var(--mono); font-size: 0.8rem; color: var(--red); margin: 0; font-weight: 600; }
-
-.project-icon {
-  font-family: var(--mono);
-  font-size: 1.3rem;
-  color: var(--red);
-  flex-shrink: 0;
-  margin-left: 20px;
-  transition: color 0.15s ease;
-}
-
-.project-body {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.25s ease;
-  padding: 0 28px;
-}
-
-.project[data-open="true"] .project-body { max-height: 600px; padding: 0 28px 28px; }
-
-.project-body ul { display: flex; flex-direction: column; gap: 10px; max-width: var(--max); }
-.project-body li {
-  position: relative;
-  padding-left: 18px;
-  font-size: 0.95rem;
-  color: #33302a;
-}
-.project-body li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 8px;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--red);
-}
-
-/* Languages */
-.lang-list { display: flex; flex-direction: column; max-width: 700px; }
-
-.lang-list li {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 16px 0;
-  border-top: 1px solid var(--line);
-  font-size: 0.95rem;
-  flex-wrap: wrap;
-}
-
-.lang-list li:last-child { border-bottom: 1px solid var(--line); }
-
-.lang-list li span:first-child { font-weight: 500; flex: 1; min-width: 180px; color: var(--ink); }
-.lang-level { color: var(--red); font-family: var(--mono); font-size: 0.82rem; font-weight: 600; }
-
-/* ---------- Footer (stays dark for bookend contrast) ---------- */
-.footer { background: var(--black); color: var(--cream); padding: 72px 24px 28px; position: relative; overflow: hidden; border-top: 2px solid var(--red); }
-
-.footer::before {
-  content: "";
-  position: absolute;
-  bottom: -140px;
-  left: -100px;
-  width: 420px;
-  height: 420px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 60% 40%, var(--red) 0%, var(--red-dark) 45%, transparent 72%);
-  opacity: 0.4;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.footer-inner {
-  max-width: 1000px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 40px;
-  flex-wrap: wrap;
-  padding-bottom: 48px;
-  border-bottom: 1px solid #332622;
-  position: relative;
-  z-index: 1;
-}
-
-.footer-main h2 { font-size: 1.8rem; margin-bottom: 10px; color: var(--red); }
-.footer-main p { color: #d3ccbd; margin: 0; max-width: 380px; }
-
-.footer-contact { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
-.footer-contact a {
-  font-family: var(--mono);
-  font-size: 0.9rem;
-  color: #d8d2c2;
-  transition: color 0.15s ease;
-}
-.footer-contact a:hover { color: var(--red); }
-
-.footer-bottom {
-  max-width: 1000px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  padding-top: 24px;
-  font-family: var(--mono);
-  font-size: 0.78rem;
-  color: #8a8177;
-  flex-wrap: wrap;
-  gap: 8px;
-  position: relative;
-  z-index: 1;
-}
-
-/* ---------- Responsive ---------- */
-@media (max-width: 760px) {
-  .nav-links {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: var(--black);
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 20px 24px;
-    gap: 18px;
-    display: none;
-  }
-  .nav-links.open { display: flex; }
-  #nav-toggle { display: flex; }
-
-  .two-col { grid-template-columns: 1fr; }
-  .skills-grid { grid-template-columns: 1fr; gap: 32px; }
-  .log-entry { grid-template-columns: 1fr; gap: 12px; }
-  .footer-inner { align-items: flex-start; }
-  .hero::after, .footer::before { display: none; }
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eleina Ann — Computer Systems Engineer</title>
+<meta name="description" content="Portfolio of Eleina Ann, Computer Systems Engineer specializing in IoT, embedded systems, and automation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav id="site-nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-mark">EA</a>
+    <button id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#languages">Languages</a></li>
+      <li><a href="#contact" class="nav-cta">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header id="top" class="hero">
+  <svg class="deco-squiggle on-dark" width="60" height="420" viewBox="0 0 60 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M-4 12C30 4 6 40 34 54C60 66 10 84 36 100C58 112 14 128 34 146C50 160 18 172 30 188C40 200 12 210 22 224C30 234 10 244 16 256C20 264 36 270 26 282C18 290 30 300 20 312C12 320 24 330 14 340C6 348 18 358 8 368C2 374 10 382 -2 392" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+  <svg class="deco-blob-left on-dark" width="260" height="460" viewBox="0 0 260 460" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M260 20C190 -10 90 30 100 110C108 178 190 160 180 230C170 300 70 280 90 350C105 405 210 430 250 400C260 392 260 200 260 20Z" fill="currentColor"/>
+  </svg>
+  <svg class="deco-squiggle-right on-dark" width="60" height="420" viewBox="0 0 60 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M-4 12C30 4 6 40 34 54C60 66 10 84 36 100C58 112 14 128 34 146C50 160 18 172 30 188C40 200 12 210 22 224C30 234 10 244 16 256C20 264 36 270 26 282C18 290 30 300 20 312C12 320 24 330 14 340C6 348 18 358 8 368C2 374 10 382 -2 392" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+  <svg class="deco-blob on-dark" width="260" height="460" viewBox="0 0 260 460" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M260 20C190 -10 90 30 100 110C108 178 190 160 180 230C170 300 70 280 90 350C105 405 210 430 250 400C260 392 260 200 260 20Z" fill="currentColor"/>
+  </svg>
+  <div class="hero-inner">
+    <h1>Eleina Ann</h1>
+    <p class="hero-role">Computer Systems Engineer</p>
+
+    <div class="terminal" id="terminal" aria-hidden="false">
+      <div class="terminal-bar">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      </div>
+      <div class="terminal-body">
+        <p class="line" data-text="whoami" data-type="prompt"></p>
+        <p class="line" data-text="Eleina Ann — Computer Systems Engineer" data-type="output"></p>
+        <p class="line" data-text="status --current" data-type="prompt"></p>
+        <p class="line" data-text="Business Operations Intern @ Kyoto Solutions" data-type="output"></p>
+        <p class="line" data-text="build --focus" data-type="prompt"></p>
+        <p class="line" data-text="IoT devices, embedded automation, secure systems" data-type="output"></p>
+        <p class="line cursor-line"><span class="prompt-glyph">&gt;</span> <span class="cursor" id="cursor"></span></p>
+      </div>
+    </div>
+
+    <div class="hero-actions">
+      <a href="#projects" class="btn btn-primary">View projects</a>
+      <a href="resume.pdf" class="btn btn-ghost" download>Download resume</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section id="about" class="section">
+    <svg class="deco-squiggle" width="60" height="420" viewBox="0 0 60 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M-4 20C26 30 4 60 30 74C54 88 8 108 32 126C52 142 12 158 28 176C42 190 10 202 22 218C32 230 6 240 14 254C20 264 34 272 22 286C12 296 26 306 14 318C4 328 18 338 6 350C-2 358 8 368 -4 380" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <svg class="deco-blob-left" width="240" height="400" viewBox="0 0 240 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M240 10C170 -20 60 10 80 90C96 154 210 140 190 210C168 286 50 260 70 330C88 388 200 400 235 365C240 356 240 180 240 10Z" fill="currentColor"/>
+    </svg>
+    <svg class="deco-squiggle-right" width="60" height="420" viewBox="0 0 60 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M-4 20C26 30 4 60 30 74C54 88 8 108 32 126C52 142 12 158 28 176C42 190 10 202 22 218C32 230 6 240 14 254C20 264 34 272 22 286C12 296 26 306 14 318C4 328 18 338 6 350C-2 358 8 368 -4 380" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <svg class="deco-blob" width="240" height="400" viewBox="0 0 240 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M240 10C170 -20 60 10 80 90C96 154 210 140 190 210C168 286 50 260 70 330C88 388 200 400 235 365C240 356 240 180 240 10Z" fill="currentColor"/>
+    </svg>
+    <div class="section-inner two-col">
+      <div class="col-label">
+        <span class="tag-dot"></span>
+        <h2>About</h2>
+      </div>
+      <div class="col-body">
+        <p>I'm a Computer Systems Engineering graduate from Middlesex University Dubai, finishing with a 3.8 GPA and First Class Honours. My work sits at the intersection of hardware and software — I've built assistive mobility devices, automated access systems, and smart retail hardware, using sensors, microcontrollers, and the apps that connect them.</p>
+        <p>I'm also certified in penetration testing and data analytics through KHDA, which shapes how I think about the systems I build: not just whether they work, but whether they hold up under scrutiny. I currently support IT procurement and solutions at Kyoto Solutions, where I help match hardware, software, and licensing to what a business actually needs.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="section alt">
+    <svg class="deco-squiggle" width="60" height="420" viewBox="0 0 60 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M-4 8C34 18 -2 46 30 60C58 72 6 92 32 108C56 122 8 140 30 156C50 168 14 182 28 198C40 210 10 222 20 236C28 248 6 258 12 272C18 282 32 290 20 304C10 314 22 324 10 336C0 346 12 356 0 368C-8 376 4 384 -8 396" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <svg class="deco-blob-left" width="250" height="440" viewBox="0 0 250 440" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M250 30C200 -15 80 0 95 80C108 148 200 130 195 200C190 270 70 250 80 320C88 380 190 420 230 390C250 375 250 190 250 30Z" fill="currentColor"/>
+    </svg>
+    <svg class="deco-squiggle-right" width="60" height="420" viewBox="0 0 60 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M-4 8C34 18 -2 46 30 60C58 72 6 92 32 108C56 122 8 140 30 156C50 168 14 182 28 198C40 210 10 222 20 236C28 248 6 258 12 272C18 282 32 290 20 304C10 314 22 324 10 336C0 346 12 356 0 368C-8 376 4 384 -8 396" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <svg class="deco-blob" width="250" height="440" viewBox="0 0 250 440" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M250 30C200 -15 80 0 95 80C108 148 200 130 195 200C190 270 70 250 80 320C88 380 190 420 230 390C250 375 250 190 250 30Z" fill="currentColor"/>
+    </svg>
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="tag-dot"></span>
+        <h2>Skills</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h3>Engineering &amp; hardware</h3>
+          <ul class="tag-list">
+            <li>SolidWorks</li>
+            <li>Onshape</li>
+            <li>Cisco Networking</li>
+            <li>App &amp; IoT Development</li>
+            <li>Linux</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Data &amp; analytics</h3>
+          <ul class="tag-list">
+            <li>Python</li>
+            <li>SQL</li>
+            <li>MATLAB</li>
+            <li>Power BI</li>
+            <li>Tableau</li>
+            <li>Advanced Excel</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Product &amp; business</h3>
+          <ul class="tag-list">
+            <li>UI/UX</li>
+            <li>IT Procurement</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="section">
+    <svg class="deco-squiggle" width="60" height="420" viewBox="0 0 60 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M-4 16C22 26 2 50 24 64C44 76 4 96 26 112C44 126 8 142 24 158C38 170 10 184 22 198C32 210 8 222 16 236C24 248 4 258 10 272C16 282 30 292 18 306C8 316 20 328 8 340C-2 350 10 360 -2 372C-10 380 2 388 -10 398" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <svg class="deco-blob-left" width="230" height="380" viewBox="0 0 230 380" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M230 15C175 -18 65 5 85 78C102 138 195 118 180 185C165 255 55 235 75 300C92 355 190 375 220 345C230 335 230 165 230 15Z" fill="currentColor"/>
+    </svg>
+    <svg class="deco-squiggle-right" width="60" height="420" viewBox="0 0 60 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M-4 16C22 26 2 50 24 64C44 76 4 96 26 112C44 126 8 142 24 158C38 170 10 184 22 198C32 210 8 222 16 236C24 248 4 258 10 272C16 282 30 292 18 306C8 316 20 328 8 340C-2 350 10 360 -2 372C-10 380 2 388 -10 398" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <svg class="deco-blob" width="230" height="380" viewBox="0 0 230 380" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M230 15C175 -18 65 5 85 78C102 138 195 118 180 185C165 255 55 235 75 300C92 355 190 375 220 345C230 335 230 165 230 15Z" fill="currentColor"/>
+    </svg>
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="tag-dot"></span>
+        <h2>Experience</h2>
+      </div>
+      <div class="log">
+        <div class="log-entry">
+          <div class="log-body">
+            <h3>Business Operations Intern</h3>
+            <p class="log-org-line">Kyoto Solutions</p>
+            <ul>
+              <li>Support end-to-end IT solution requirements across hardware, software, networking, cybersecurity, cloud, and infrastructure, aligning products with customer needs.</li>
+              <li>Source and evaluate IT products against technical specifications, compatibility, licensing, and pricing.</li>
+              <li>Support licensing for Microsoft 365, VMware, Veeam, Adobe, Cisco, Fortinet, and Aruba.</li>
+              <li>Prepare IT proposals, quotations, purchase orders, and project acceptance forms, managing vendor documentation.</li>
+              <li>Analyze vendor pricing against customer requirements, applying margins by customer type.</li>
+            </ul>
+          </div>
+          <div class="log-meta">
+            <span class="log-date">09/2026 — Present</span>
+            <span class="log-loc">Dubai, UAE</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="section alt">
+    <svg class="deco-squiggle" width="60" height="420" viewBox="0 0 60 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M-4 10C28 22 0 44 28 58C54 70 6 90 30 106C52 120 10 136 28 152C44 164 12 178 26 192C38 204 10 216 20 230C28 242 4 252 12 266C18 276 34 284 20 298C8 308 22 320 8 332C-4 342 10 352 -4 364C-14 372 0 382 -12 394" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <svg class="deco-blob-left" width="260" height="460" viewBox="0 0 260 460" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M260 20C190 -10 90 30 100 110C108 178 190 160 180 230C170 300 70 280 90 350C105 405 210 430 250 400C260 392 260 200 260 20Z" fill="currentColor"/>
+    </svg>
+    <svg class="deco-squiggle-right" width="60" height="420" viewBox="0 0 60 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M-4 10C28 22 0 44 28 58C54 70 6 90 30 106C52 120 10 136 28 152C44 164 12 178 26 192C38 204 10 216 20 230C28 242 4 252 12 266C18 276 34 284 20 298C8 308 22 320 8 332C-4 342 10 352 -4 364C-14 372 0 382 -12 394" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <svg class="deco-blob" width="260" height="460" viewBox="0 0 260 460" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M260 20C190 -10 90 30 100 110C108 178 190 160 180 230C170 300 70 280 90 350C105 405 210 430 250 400C260 392 260 200 260 20Z" fill="currentColor"/>
+    </svg>
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="tag-dot"></span>
+        <h2>Projects</h2>
+      </div>
+      <div class="projects">
+
+        <article class="project" data-open="true">
+          <button class="project-toggle" aria-expanded="true">
+            <div class="project-head">
+              <h3>Chariot</h3>
+              <p class="project-sub">Assistive Mobility Device · 12/2024 – 04/2025</p>
+            </div>
+            <span class="project-icon">—</span>
+          </button>
+          <div class="project-body">
+            <ul>
+              <li>Built a sensor-based smart wheelchair system on Arduino Uno and ESP32, with Wi-Fi and HC-05 Bluetooth.</li>
+              <li>Implemented automatic braking that stops movement if the user's flex-controlled hands go still.</li>
+              <li>Added an emergency alert button that sends SOS alerts via app and from the wheelchair itself.</li>
+              <li>Developed flex-sensor gesture control, letting users navigate by bending their fingers.</li>
+              <li>Designed and 3D-printed a custom phone holder and wheel shafts in Onshape, paired with an app built in MIT App Inventor.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="project">
+          <button class="project-toggle" aria-expanded="false">
+            <div class="project-head">
+              <h3>Guardian Gate</h3>
+              <p class="project-sub">Automated Garage System · 09/2024 – 04/2025</p>
+            </div>
+            <span class="project-icon">+</span>
+          </button>
+          <div class="project-body">
+            <ul>
+              <li>Built on Arduino, ESP32, and HC-05 Bluetooth, combining hardware and software into one IoT system.</li>
+              <li>Developed RFID-based access control to ensure only authorized vehicles enter.</li>
+              <li>Implemented a motorized door mechanism for automated entry and exit.</li>
+              <li>Integrated ultrasonic sensors to help drivers park precisely and detect obstacles.</li>
+              <li>Designed a Bluetooth-enabled mobile app for real-time status and remote monitoring.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="project">
+          <button class="project-toggle" aria-expanded="false">
+            <div class="project-head">
+              <h3>Quikart</h3>
+              <p class="project-sub">Smart Retail Companion · 10/2023 – 04/2024</p>
+            </div>
+            <span class="project-icon">+</span>
+          </button>
+          <div class="project-body">
+            <ul>
+              <li>Built a smart shopping cart using Arduino, Raspberry Pi, RFID, Firebase, and 3D printing.</li>
+              <li>Integrated an RFID reader into the handlebar for automatic item scanning and identification.</li>
+              <li>Synced item data with a Firebase real-time database, tracking quantities, prices, and totals.</li>
+              <li>Built an Android Studio app displaying cart details and total for checkout.</li>
+              <li>Designed a custom phone holder in Onshape for hands-free operation.</li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="education" class="section">
+    <svg class="deco-squiggle" width="60" height="420" viewBox="0 0 60 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M-4 14C24 24 4 48 26 62C46 74 10 92 28 108C44 120 14 134 26 148C36 160 12 172 20 186C28 198 8 208 14 222C20 232 32 240 22 254C14 264 24 274 14 286C6 296 16 306 6 318C-2 326 8 336 -2 348C-8 356 2 364 -8 376" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <svg class="deco-blob-left" width="235" height="410" viewBox="0 0 235 410" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M235 25C180 -12 70 15 90 90C106 152 195 135 185 200C175 265 60 245 80 310C97 362 195 390 225 360C235 350 235 180 235 25Z" fill="currentColor"/>
+    </svg>
+    <svg class="deco-squiggle-right" width="60" height="420" viewBox="0 0 60 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M-4 14C24 24 4 48 26 62C46 74 10 92 28 108C44 120 14 134 26 148C36 160 12 172 20 186C28 198 8 208 14 222C20 232 32 240 22 254C14 264 24 274 14 286C6 296 16 306 6 318C-2 326 8 336 -2 348C-8 356 2 364 -8 376" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <svg class="deco-blob" width="235" height="410" viewBox="0 0 235 410" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M235 25C180 -12 70 15 90 90C106 152 195 135 185 200C175 265 60 245 80 310C97 362 195 390 225 360C235 350 235 180 235 25Z" fill="currentColor"/>
+    </svg>
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="tag-dot"></span>
+        <h2>Education</h2>
+      </div>
+      <div class="log">
+        <div class="log-entry">
+          <div class="log-body">
+            <h3>BEng Computer Systems Engineering</h3>
+            <p class="log-org-line">Middlesex University Dubai — <span class="log-detail-inline">3.8 GPA, First Class Honours</span></p>
+            <ul>
+              <li>Top 10 finalist, Inter-University CTF Competition, recognized for problem-solving and ethical hacking.</li>
+              <li>Events Club team volunteer and student ambassador for prospective students.</li>
+            </ul>
+          </div>
+          <div class="log-meta">
+            <span class="log-date">09/2022 — 09/2025</span>
+            <span class="log-loc">Dubai, UAE</span>
+          </div>
+        </div>
+        <div class="log-entry">
+          <div class="log-body">
+            <h3>A-Levels, Science Stream</h3>
+            <p class="log-org-line">GEMS Westminster School Sharjah</p>
+            <ul>
+              <li>Highest Passport Hours awardee, completing 115 hours of school volunteering.</li>
+            </ul>
+          </div>
+          <div class="log-meta">
+            <span class="log-date">09/2021 — 09/2022</span>
+            <span class="log-loc">Sharjah, UAE</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications" class="section alt">
+    <svg class="deco-squiggle" width="60" height="420" viewBox="0 0 60 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M-4 18C30 8 4 44 32 58C58 70 8 88 34 104C56 116 12 132 32 148C48 160 16 174 30 188C42 200 12 210 22 224C30 234 8 244 16 256C22 264 36 272 24 284C14 292 26 302 14 312C4 320 16 330 4 340C-6 348 4 356 -8 366" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <svg class="deco-blob-left" width="255" height="450" viewBox="0 0 255 450" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M255 15C195 -18 75 8 95 88C112 154 205 135 195 205C185 278 65 258 85 325C102 380 205 405 240 375C255 362 255 185 255 15Z" fill="currentColor"/>
+    </svg>
+    <svg class="deco-squiggle-right" width="60" height="420" viewBox="0 0 60 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M-4 18C30 8 4 44 32 58C58 70 8 88 34 104C56 116 12 132 32 148C48 160 16 174 30 188C42 200 12 210 22 224C30 234 8 244 16 256C22 264 36 272 24 284C14 292 26 302 14 312C4 320 16 330 4 340C-6 348 4 356 -8 366" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <svg class="deco-blob" width="255" height="450" viewBox="0 0 255 450" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M255 15C195 -18 75 8 95 88C112 154 205 135 195 205C185 278 65 258 85 325C102 380 205 405 240 375C255 362 255 185 255 15Z" fill="currentColor"/>
+    </svg>
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="tag-dot"></span>
+        <h2>Certifications</h2>
+      </div>
+      <div class="log">
+        <div class="log-entry">
+          <div class="log-body">
+            <h3>KHDA Data Analytics</h3>
+            <p class="log-org-line">LearnersPoint</p>
+          </div>
+          <div class="log-meta">
+            <span class="log-date">08/2025 – 11/2025</span>
+          </div>
+        </div>
+        <div class="log-entry">
+          <div class="log-body">
+            <h3>KHDA Advanced Penetration Testing</h3>
+            <p class="log-org-line">RedTeam Hacker Academy</p>
+          </div>
+          <div class="log-meta">
+            <span class="log-date">08/2023 – 12/2023</span>
+          </div>
+        </div>
+        <div class="log-entry">
+          <div class="log-body">
+            <h3>KHDA Ethical Hacking</h3>
+            <p class="log-org-line">RedTeam Hacker Academy</p>
+          </div>
+          <div class="log-meta">
+            <span class="log-date">08/2023 – 12/2023</span>
+          </div>
+        </div>
+        <div class="log-entry">
+          <div class="log-body">
+            <h3>C# Game Programming</h3>
+            <p class="log-org-line">MindBox D2H</p>
+          </div>
+          <div class="log-meta">
+            <span class="log-date">07/2021 – 08/2021</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="languages" class="section">
+    <svg class="deco-squiggle" width="60" height="420" viewBox="0 0 60 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M-4 22C22 12 0 46 26 58C50 68 6 84 30 98C50 110 14 122 28 136C40 148 12 158 22 172C30 184 8 194 14 208C20 218 32 226 22 240C14 250 24 260 14 272C6 282 16 292 6 304C-2 312 6 320 -4 332C-10 340 0 348 -10 360" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <svg class="deco-blob-left" width="245" height="420" viewBox="0 0 245 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M245 20C188 -15 72 10 90 85C105 148 198 128 188 195C178 265 62 245 82 310C99 362 200 388 232 358C245 346 245 175 245 20Z" fill="currentColor"/>
+    </svg>
+    <svg class="deco-squiggle-right" width="60" height="420" viewBox="0 0 60 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M-4 22C22 12 0 46 26 58C50 68 6 84 30 98C50 110 14 122 28 136C40 148 12 158 22 172C30 184 8 194 14 208C20 218 32 226 22 240C14 250 24 260 14 272C6 282 16 292 6 304C-2 312 6 320 -4 332C-10 340 0 348 -10 360" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <svg class="deco-blob" width="245" height="420" viewBox="0 0 245 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M245 20C188 -15 72 10 90 85C105 148 198 128 188 195C178 265 62 245 82 310C99 362 200 388 232 358C245 346 245 175 245 20Z" fill="currentColor"/>
+    </svg>
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="tag-dot"></span>
+        <h2>Languages</h2>
+      </div>
+      <ul class="lang-list">
+        <li><span>English</span><span class="lang-level">Full professional proficiency</span></li>
+        <li><span>Malayalam</span><span class="lang-level">Native professional proficiency</span></li>
+        <li><span>Hindi</span><span class="lang-level">Limited professional proficiency</span></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact" class="footer">
+  <svg class="deco-squiggle on-dark" width="60" height="420" viewBox="0 0 60 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M-4 26C28 14 2 48 30 62C56 74 8 92 32 108C54 122 12 136 30 150C46 162 14 174 26 188C36 200 10 212 18 226C24 238 4 248 10 262C14 272 30 280 18 294C8 304 20 316 8 328C-2 338 10 348 -4 360C-12 368 0 378 -12 390" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+  <svg class="deco-blob-left on-dark" width="260" height="460" viewBox="0 0 260 460" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M260 20C190 -10 90 30 100 110C108 178 190 160 180 230C170 300 70 280 90 350C105 405 210 430 250 400C260 392 260 200 260 20Z" fill="currentColor"/>
+  </svg>
+  <svg class="deco-squiggle-right on-dark" width="60" height="420" viewBox="0 0 60 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M-4 26C28 14 2 48 30 62C56 74 8 92 32 108C54 122 12 136 30 150C46 162 14 174 26 188C36 200 10 212 18 226C24 238 4 248 10 262C14 272 30 280 18 294C8 304 20 316 8 328C-2 338 10 348 -4 360C-12 368 0 378 -12 390" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+  <svg class="deco-blob on-dark" width="260" height="460" viewBox="0 0 260 460" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M260 20C190 -10 90 30 100 110C108 178 190 160 180 230C170 300 70 280 90 350C105 405 210 430 250 400C260 392 260 200 260 20Z" fill="currentColor"/>
+  </svg>
+  <div class="footer-inner">
+    <div class="footer-main">
+      <h2>Let's talk</h2>
+      <p>Open to connect</p>
+    </div>
+    <div class="footer-contact">
+      <a href="mailto:Eleinaann@gmail.com">Eleinaann@gmail.com</a>
+      <a href="tel:+971563622815">+971 56 362 2815</a>
+      <a href="resume.pdf" download>Download resume</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© <span id="year"></span> Eleina Ann</span>
+    <span>Built with HTML, CSS &amp; JS</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
