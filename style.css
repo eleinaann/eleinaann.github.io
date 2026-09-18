@@ -1,16 +1,22 @@
 /* ---------- Tokens ---------- */
 :root {
-  --black: #181717;
+  --black: #14161a;
   --white: #ffffff;
-  --cream: #edebdd;
-  --cream-alt: #f6f4ea;
-  --ink: #1f1c1a;
-  --muted: #6f6a5e;
-  --red: #810100;
-  --red-dark: #630000;
-  --red-glow: rgba(129, 1, 0, 0.18);
-  --red-glow-soft: rgba(129, 1, 0, 0.10);
-  --line: #ddd8c6;
+  --cream: #e6e8ec;
+  --cream-alt: #dde0e6;
+  --ink: #1a1c20;
+  --muted: #6a6f78;
+  --red: #3454d1;
+  --red-dark: #24399a;
+  --red-glow: rgba(52, 84, 209, 0.18);
+  --red-glow-soft: rgba(52, 84, 209, 0.10);
+  --accent-teal: #0e8f82;
+  --accent-teal-glow: rgba(14, 143, 130, 0.14);
+  --accent-purple: #7c4fe0;
+  --accent-purple-glow: rgba(124, 79, 224, 0.14);
+  --accent-coral: #e2574c;
+  --accent-coral-glow: rgba(226, 87, 76, 0.14);
+  --line: #ccd0d8;
   --mono: 'JetBrains Mono', ui-monospace, monospace;
   --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --max: 780px;
@@ -43,7 +49,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(24, 23, 23, 0.94);
+  background: rgba(20, 22, 26, 0.94);
   backdrop-filter: blur(6px);
   border-bottom: 2px solid var(--red);
 }
@@ -75,7 +81,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 
 .nav-links a {
-  color: #d8d2c2;
+  color: #ced2da;
   font-size: 0.88rem;
   font-family: var(--sans);
   font-weight: 600;
@@ -111,7 +117,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   display: block;
 }
 
-/* ---------- Hero (now matches page background) ---------- */
+/* ---------- Hero ---------- */
 .hero {
   background: var(--cream);
   color: var(--ink);
@@ -125,8 +131,8 @@ ul { margin: 0; padding: 0; list-style: none; }
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(to right, rgba(129,1,0,0.10) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(129,1,0,0.10) 1px, transparent 1px);
+    linear-gradient(to right, rgba(52,84,209,0.10) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(52,84,209,0.10) 1px, transparent 1px);
   background-size: 48px 48px;
   mask-image: linear-gradient(to bottom, black, transparent 85%);
   pointer-events: none;
@@ -247,7 +253,6 @@ ul { margin: 0; padding: 0; list-style: none; }
 .btn-ghost:hover { background: var(--red); color: var(--cream); }
 
 /* ---------- Decorative shapes ---------- */
-/* Squiggles: dark ink on light backgrounds everywhere now, since hero/footer no longer dark */
 .deco-squiggle,
 .deco-squiggle-right {
   color: var(--black);
@@ -261,7 +266,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .deco-squiggle { left: 0; transform: translateY(-50%); }
 .deco-squiggle-right { right: 0; transform: translateY(-50%) scaleX(-1); }
 
-/* Blobs: always red */
+/* Blobs: indigo by default, overridden per-section by accent classes below */
 .deco-blob,
 .deco-blob-left {
   color: var(--red);
@@ -274,6 +279,10 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 .deco-blob { right: 0; transform: translateY(-50%); }
 .deco-blob-left { left: 0; transform: translateY(-50%) scaleX(-1); }
+
+.deco-blob.c-teal, .deco-blob-left.c-teal { color: var(--accent-teal); }
+.deco-blob.c-purple, .deco-blob-left.c-purple { color: var(--accent-purple); }
+.deco-blob.c-coral, .deco-blob-left.c-coral { color: var(--accent-coral); }
 
 @media (max-width: 1100px) {
   .deco-squiggle, .deco-blob, .deco-squiggle-right, .deco-blob-left { display: none; }
@@ -300,6 +309,14 @@ ul { margin: 0; padding: 0; list-style: none; }
   box-shadow: 0 0 0 5px var(--red-glow-soft);
   flex-shrink: 0;
 }
+
+/* Section tag-dots pick up the section's accent color */
+#about .tag-dot { background: var(--accent-teal); box-shadow: 0 0 0 5px var(--accent-teal-glow); }
+#skills .tag-dot { background: var(--accent-purple); box-shadow: 0 0 0 5px var(--accent-purple-glow); }
+#experience .tag-dot { background: var(--accent-coral); box-shadow: 0 0 0 5px var(--accent-coral-glow); }
+#education .tag-dot { background: var(--accent-teal); box-shadow: 0 0 0 5px var(--accent-teal-glow); }
+#certifications .tag-dot { background: var(--accent-purple); box-shadow: 0 0 0 5px var(--accent-purple-glow); }
+#languages .tag-dot { background: var(--accent-coral); box-shadow: 0 0 0 5px var(--accent-coral-glow); }
 
 .section h2 { font-size: 1.55rem; font-weight: 600; color: var(--ink); }
 
@@ -365,6 +382,25 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 
 .tag-list li:hover { background: var(--red); color: var(--cream); border-left-color: var(--red-dark); }
+
+/* Skill groups each get their own accent color */
+.skill-group:nth-child(1) { border-top-color: var(--accent-teal); }
+.skill-group:nth-child(1) h3 { color: var(--accent-teal); }
+.skill-group:nth-child(1) .tag-list li { border-left-color: var(--accent-teal); }
+.skill-group:nth-child(1) .tag-list li:hover { background: var(--accent-teal); border-left-color: var(--accent-teal); }
+.skill-group:nth-child(1):hover { box-shadow: 0 8px 24px var(--accent-teal-glow); border-color: var(--accent-teal); }
+
+.skill-group:nth-child(2) { border-top-color: var(--accent-purple); }
+.skill-group:nth-child(2) h3 { color: var(--accent-purple); }
+.skill-group:nth-child(2) .tag-list li { border-left-color: var(--accent-purple); }
+.skill-group:nth-child(2) .tag-list li:hover { background: var(--accent-purple); border-left-color: var(--accent-purple); }
+.skill-group:nth-child(2):hover { box-shadow: 0 8px 24px var(--accent-purple-glow); border-color: var(--accent-purple); }
+
+.skill-group:nth-child(3) { border-top-color: var(--accent-coral); }
+.skill-group:nth-child(3) h3 { color: var(--accent-coral); }
+.skill-group:nth-child(3) .tag-list li { border-left-color: var(--accent-coral); }
+.skill-group:nth-child(3) .tag-list li:hover { background: var(--accent-coral); border-left-color: var(--accent-coral); }
+.skill-group:nth-child(3):hover { box-shadow: 0 8px 24px var(--accent-coral-glow); border-color: var(--accent-coral); }
 
 /* Log (experience / education / certifications) */
 .log { display: flex; flex-direction: column; gap: 40px; }
@@ -487,6 +523,15 @@ ul { margin: 0; padding: 0; list-style: none; }
   background: var(--red);
 }
 
+/* Each project gets its own accent color */
+.projects .project:nth-child(2) .project-sub,
+.projects .project:nth-child(2) .project-icon { color: var(--accent-teal); }
+.projects .project:nth-child(2)[data-open="true"] { border-left-color: var(--accent-teal); background: linear-gradient(90deg, var(--accent-teal-glow), var(--white) 40%); }
+
+.projects .project:nth-child(3) .project-sub,
+.projects .project:nth-child(3) .project-icon { color: var(--accent-purple); }
+.projects .project:nth-child(3)[data-open="true"] { border-left-color: var(--accent-purple); background: linear-gradient(90deg, var(--accent-purple-glow), var(--white) 40%); }
+
 /* Languages */
 .lang-list { display: flex; flex-direction: column; max-width: 700px; }
 
@@ -505,7 +550,10 @@ ul { margin: 0; padding: 0; list-style: none; }
 .lang-list li span:first-child { font-weight: 500; flex: 1; min-width: 180px; color: var(--ink); }
 .lang-level { color: var(--red); font-family: var(--mono); font-size: 0.82rem; font-weight: 600; }
 
-/* ---------- Footer (now matches page background) ---------- */
+.lang-list li:nth-child(2) .lang-level { color: var(--accent-teal); }
+.lang-list li:nth-child(3) .lang-level { color: var(--accent-purple); }
+
+/* ---------- Footer ---------- */
 .footer { background: var(--cream); color: var(--ink); padding: 72px 24px 28px; position: relative; overflow: hidden; border-top: 2px solid var(--red); }
 
 .footer::before {
