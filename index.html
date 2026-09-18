@@ -14,15 +14,15 @@
 
 <nav id="site-nav">
   <div class="nav-inner">
-    <a href="#top" class="nav-mark">EA</a>
+    <a href="#top" class="nav-mark">Eleina Ann</a>
     <button id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links">
-      <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
-      <li><a href="#experience">Experience</a></li>
+      <li><a href="#about">About</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="#certifications">Certifications</a></li>
       <li><a href="#languages">Languages</a></li>
@@ -32,91 +32,53 @@
 </nav>
 
 <header id="top" class="hero">
-  <svg class="deco-squiggle on-dark" width="60" height="420" viewBox="0 0 60 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <path d="M-4 12C30 4 6 40 34 54C60 66 10 84 36 100C58 112 14 128 34 146C50 160 18 172 30 188C40 200 12 210 22 224C30 234 10 244 16 256C20 264 36 270 26 282C18 290 30 300 20 312C12 320 24 330 14 340C6 348 18 358 8 368C2 374 10 382 -2 392" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-  </svg>
-  <svg class="deco-blob-left on-dark" width="260" height="460" viewBox="0 0 260 460" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <path d="M150,10 C205,0 245,55 230,120 C218,172 165,155 175,225 C185,300 250,300 240,365 C230,425 150,460 95,430 C45,403 55,340 90,305 C120,275 55,255 60,190 C65,110 100,20 150,10 Z" fill="currentColor"/>
-  </svg>
-  <svg class="deco-squiggle-right on-dark" width="60" height="420" viewBox="0 0 60 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <path d="M-4 12C30 4 6 40 34 54C60 66 10 84 36 100C58 112 14 128 34 146C50 160 18 172 30 188C40 200 12 210 22 224C30 234 10 244 16 256C20 264 36 270 26 282C18 290 30 300 20 312C12 320 24 330 14 340C6 348 18 358 8 368C2 374 10 382 -2 392" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-  </svg>
-  <svg class="deco-blob on-dark" width="260" height="460" viewBox="0 0 260 460" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <path d="M150,10 C205,0 245,55 230,120 C218,172 165,155 175,225 C185,300 250,300 240,365 C230,425 150,460 95,430 C45,403 55,340 90,305 C120,275 55,255 60,190 C65,110 100,20 150,10 Z" fill="currentColor"/>
-  </svg>
   <div class="hero-inner">
-    <h1>Eleina Ann</h1>
-    <p class="hero-role">Computer Systems Engineer</p>
-
-    <div class="terminal" id="terminal" aria-hidden="false">
-      <div class="terminal-bar">
-        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-      </div>
-      <div class="terminal-body">
-        <p class="line" data-text="whoami" data-type="prompt"></p>
-        <p class="line" data-text="Eleina Ann — Computer Systems Engineer" data-type="output"></p>
-        <p class="line" data-text="status --current" data-type="prompt"></p>
-        <p class="line" data-text="Business Operations Intern @ Kyoto Solutions" data-type="output"></p>
-        <p class="line" data-text="build --focus" data-type="prompt"></p>
-        <p class="line" data-text="IoT devices, embedded automation, secure systems" data-type="output"></p>
-        <p class="line cursor-line"><span class="prompt-glyph">&gt;</span> <span class="cursor" id="cursor"></span></p>
+    <div class="hero-copy">
+      <p class="eyebrow">Computer Systems Engineer</p>
+      <h1>Eleina Ann</h1>
+      <p class="hero-role">IoT devices · embedded automation · secure systems</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">View projects</a>
+        <a href="resume.pdf" class="btn btn-ghost" download>Download resume</a>
       </div>
     </div>
 
-    <div class="hero-actions">
-      <a href="#projects" class="btn btn-primary">View projects</a>
-      <a href="resume.pdf" class="btn btn-ghost" download>Download resume</a>
+    <div class="hero-visual">
+      <div class="hero-arch">
+        <div class="terminal" id="terminal" aria-hidden="false">
+          <div class="terminal-bar">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          </div>
+          <div class="terminal-body">
+            <p class="line" data-text="whoami" data-type="prompt"></p>
+            <p class="line" data-text="Eleina Ann — Computer Systems Engineer" data-type="output"></p>
+            <p class="line" data-text="status --current" data-type="prompt"></p>
+            <p class="line" data-text="Business Operations Intern @ Kyoto Solutions" data-type="output"></p>
+            <p class="line" data-text="build --focus" data-type="prompt"></p>
+            <p class="line" data-text="IoT devices, embedded automation, secure systems" data-type="output"></p>
+            <p class="line cursor-line"><span class="prompt-glyph">&gt;</span> <span class="cursor" id="cursor"></span></p>
+          </div>
+        </div>
+      </div>
+      <div class="hero-badge">
+        <span class="hero-badge-name">Eleina Ann</span>
+        <span class="hero-badge-role">Systems Engineer</span>
+      </div>
     </div>
   </div>
 </header>
 
 <main>
 
-  <section id="about" class="section">
-    <svg class="deco-squiggle" width="60" height="420" viewBox="0 0 60 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M-4 20C26 30 4 60 30 74C54 88 8 108 32 126C52 142 12 158 28 176C42 190 10 202 22 218C32 230 6 240 14 254C20 264 34 272 22 286C12 296 26 306 14 318C4 328 18 338 6 350C-2 358 8 368 -4 380" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    </svg>
-    <svg class="deco-blob-left c-teal" width="240" height="400" viewBox="0 0 240 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M120,15 C175,-10 235,35 225,100 C218,150 165,140 175,195 C188,255 245,260 235,320 C225,385 160,420 110,395 C65,373 75,320 100,290 C130,255 60,230 65,175 C70,110 75,35 120,15 Z" fill="currentColor"/>
-    </svg>
-    <svg class="deco-squiggle-right" width="60" height="420" viewBox="0 0 60 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M-4 20C26 30 4 60 30 74C54 88 8 108 32 126C52 142 12 158 28 176C42 190 10 202 22 218C32 230 6 240 14 254C20 264 34 272 22 286C12 296 26 306 14 318C4 328 18 338 6 350C-2 358 8 368 -4 380" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    </svg>
-    <svg class="deco-blob c-teal" width="240" height="400" viewBox="0 0 240 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M120,15 C175,-10 235,35 225,100 C218,150 165,140 175,195 C188,255 245,260 235,320 C225,385 160,420 110,395 C65,373 75,320 100,290 C130,255 60,230 65,175 C70,110 75,35 120,15 Z" fill="currentColor"/>
-    </svg>
-    <div class="section-inner two-col">
-      <div class="col-label">
-        <span class="tag-dot"></span>
-        <h2>About</h2>
-      </div>
-      <div class="col-body">
-        <p>I'm a Computer Systems Engineering graduate from Middlesex University Dubai, finishing with a 3.8 GPA and First Class Honours. My work sits at the intersection of hardware and software — I've built assistive mobility devices, automated access systems, and smart retail hardware, using sensors, microcontrollers, and the apps that connect them.</p>
-        <p>I'm also certified in penetration testing and data analytics through KHDA, which shapes how I think about the systems I build: not just whether they work, but whether they hold up under scrutiny. I currently support IT procurement and solutions at Kyoto Solutions, where I help match hardware, software, and licensing to what a business actually needs.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="skills" class="section alt">
-    <svg class="deco-squiggle" width="60" height="420" viewBox="0 0 60 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M-4 8C34 18 -2 46 30 60C58 72 6 92 32 108C56 122 8 140 30 156C50 168 14 182 28 198C40 210 10 222 20 236C28 248 6 258 12 272C18 282 32 290 20 304C10 314 22 324 10 336C0 346 12 356 0 368C-8 376 4 384 -8 396" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    </svg>
-    <svg class="deco-blob-left c-purple" width="250" height="440" viewBox="0 0 250 440" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M140,20 C195,5 240,60 220,125 C205,175 250,190 245,255 C240,320 180,315 190,375 C198,430 130,455 85,420 C45,388 65,335 95,300 C120,270 55,245 65,180 C73,115 95,32 140,20 Z" fill="currentColor"/>
-    </svg>
-    <svg class="deco-squiggle-right" width="60" height="420" viewBox="0 0 60 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M-4 8C34 18 -2 46 30 60C58 72 6 92 32 108C56 122 8 140 30 156C50 168 14 182 28 198C40 210 10 222 20 236C28 248 6 258 12 272C18 282 32 290 20 304C10 314 22 324 10 336C0 346 12 356 0 368C-8 376 4 384 -8 396" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    </svg>
-    <svg class="deco-blob c-purple" width="250" height="440" viewBox="0 0 250 440" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M140,20 C195,5 240,60 220,125 C205,175 250,190 245,255 C240,320 180,315 190,375 C198,430 130,455 85,420 C45,388 65,335 95,300 C120,270 55,245 65,180 C73,115 95,32 140,20 Z" fill="currentColor"/>
-    </svg>
+  <section id="skills" class="section intro-row">
     <div class="section-inner">
-      <div class="section-head">
-        <span class="tag-dot"></span>
-        <h2>Skills</h2>
+      <div class="intro-head">
+        <p class="eyebrow">What I work with</p>
+        <h2>A toolkit built across hardware and data</h2>
       </div>
-      <div class="skills-grid">
-        <div class="skill-group">
+      <div class="arch-grid">
+        <div class="arch-card">
+          <div class="arch-card-visual accent-teal"></div>
           <h3>Engineering &amp; hardware</h3>
           <ul class="tag-list">
             <li>SolidWorks</li>
@@ -126,7 +88,8 @@
             <li>Linux</li>
           </ul>
         </div>
-        <div class="skill-group">
+        <div class="arch-card">
+          <div class="arch-card-visual accent-purple"></div>
           <h3>Data &amp; analytics</h3>
           <ul class="tag-list">
             <li>Python</li>
@@ -137,7 +100,8 @@
             <li>Advanced Excel</li>
           </ul>
         </div>
-        <div class="skill-group">
+        <div class="arch-card">
+          <div class="arch-card-visual accent-coral"></div>
           <h3>Product &amp; business</h3>
           <ul class="tag-list">
             <li>UI/UX</li>
@@ -148,64 +112,28 @@
     </div>
   </section>
 
-  <section id="experience" class="section">
-    <svg class="deco-squiggle" width="60" height="420" viewBox="0 0 60 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M-4 16C22 26 2 50 24 64C44 76 4 96 26 112C44 126 8 142 24 158C38 170 10 184 22 198C32 210 8 222 16 236C24 248 4 258 10 272C16 282 30 292 18 306C8 316 20 328 8 340C-2 350 10 360 -2 372C-10 380 2 388 -10 398" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    </svg>
-    <svg class="deco-blob-left c-coral" width="230" height="380" viewBox="0 0 230 380" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M150,10 C205,0 245,55 230,120 C218,172 165,155 175,225 C185,300 250,300 240,365 C230,425 150,460 95,430 C45,403 55,340 90,305 C120,275 55,255 60,190 C65,110 100,20 150,10 Z" fill="currentColor"/>
-    </svg>
-    <svg class="deco-squiggle-right" width="60" height="420" viewBox="0 0 60 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M-4 16C22 26 2 50 24 64C44 76 4 96 26 112C44 126 8 142 24 158C38 170 10 184 22 198C32 210 8 222 16 236C24 248 4 258 10 272C16 282 30 292 18 306C8 316 20 328 8 340C-2 350 10 360 -2 372C-10 380 2 388 -10 398" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    </svg>
-    <svg class="deco-blob c-coral" width="230" height="380" viewBox="0 0 230 380" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M150,10 C205,0 245,55 230,120 C218,172 165,155 175,225 C185,300 250,300 240,365 C230,425 150,460 95,430 C45,403 55,340 90,305 C120,275 55,255 60,190 C65,110 100,20 150,10 Z" fill="currentColor"/>
-    </svg>
-    <div class="section-inner">
-      <div class="section-head">
-        <span class="tag-dot"></span>
-        <h2>Experience</h2>
+  <section id="about" class="section about-section">
+    <div class="section-inner about-layout">
+      <div class="about-visual">
+        <div class="about-visual-bg"></div>
+        <div class="about-visual-arch"></div>
       </div>
-      <div class="log">
-        <div class="log-entry">
-          <div class="log-body">
-            <h3>Business Operations Intern</h3>
-            <p class="log-org-line">Kyoto Solutions</p>
-            <ul>
-              <li>Support end-to-end IT solution requirements across hardware, software, networking, cybersecurity, cloud, and infrastructure, aligning products with customer needs.</li>
-              <li>Source and evaluate IT products against technical specifications, compatibility, licensing, and pricing.</li>
-              <li>Support licensing for Microsoft 365, VMware, Veeam, Adobe, Cisco, Fortinet, and Aruba.</li>
-              <li>Prepare IT proposals, quotations, purchase orders, and project acceptance forms, managing vendor documentation.</li>
-              <li>Analyze vendor pricing against customer requirements, applying margins by customer type.</li>
-            </ul>
-          </div>
-          <div class="log-meta">
-            <span class="log-date">09/2026 — Present</span>
-            <span class="log-loc">Dubai, UAE</span>
-          </div>
-        </div>
+      <div class="about-content">
+        <p class="eyebrow">Get to know me</p>
+        <h2 class="about-heading">About</h2>
+        <p>I'm a Computer Systems Engineering graduate from Middlesex University Dubai, finishing with a 3.8 GPA and First Class Honours. My work sits at the intersection of hardware and software — I've built assistive mobility devices, automated access systems, and smart retail hardware, using sensors, microcontrollers, and the apps that connect them.</p>
+        <p>I'm also certified in penetration testing and data analytics through KHDA, which shapes how I think about the systems I build: not just whether they work, but whether they hold up under scrutiny. I currently support IT procurement and solutions at Kyoto Solutions, where I help match hardware, software, and licensing to what a business actually needs.</p>
+        <a href="#contact" class="btn btn-primary">Get in touch</a>
       </div>
     </div>
   </section>
 
-  <section id="projects" class="section alt">
-    <svg class="deco-squiggle" width="60" height="420" viewBox="0 0 60 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M-4 10C28 22 0 44 28 58C54 70 6 90 30 106C52 120 10 136 28 152C44 164 12 178 26 192C38 204 10 216 20 230C28 242 4 252 12 266C18 276 34 284 20 298C8 308 22 320 8 332C-4 342 10 352 -4 364C-14 372 0 382 -12 394" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    </svg>
-    <svg class="deco-blob-left" width="260" height="460" viewBox="0 0 260 460" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M120,15 C175,-10 235,35 225,100 C218,150 165,140 175,195 C188,255 245,260 235,320 C225,385 160,420 110,395 C65,373 75,320 100,290 C130,255 60,230 65,175 C70,110 75,35 120,15 Z" fill="currentColor"/>
-    </svg>
-    <svg class="deco-squiggle-right" width="60" height="420" viewBox="0 0 60 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M-4 10C28 22 0 44 28 58C54 70 6 90 30 106C52 120 10 136 28 152C44 164 12 178 26 192C38 204 10 216 20 230C28 242 4 252 12 266C18 276 34 284 20 298C8 308 22 320 8 332C-4 342 10 352 -4 364C-14 372 0 382 -12 394" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    </svg>
-    <svg class="deco-blob" width="260" height="460" viewBox="0 0 260 460" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M120,15 C175,-10 235,35 225,100 C218,150 165,140 175,195 C188,255 245,260 235,320 C225,385 160,420 110,395 C65,373 75,320 100,290 C130,255 60,230 65,175 C70,110 75,35 120,15 Z" fill="currentColor"/>
-    </svg>
-    <div class="section-inner">
-      <div class="section-head">
-        <span class="tag-dot"></span>
-        <h2>Projects</h2>
-      </div>
+  <section id="projects" class="section projects-section">
+    <div class="projects-bg"></div>
+    <div class="section-inner projects-inner">
+      <p class="eyebrow eyebrow-light">Selected builds</p>
+      <h2 class="projects-heading">Projects</h2>
+
       <div class="projects">
 
         <article class="project" data-open="true">
@@ -269,22 +197,38 @@
     </div>
   </section>
 
-  <section id="education" class="section">
-    <svg class="deco-squiggle" width="60" height="420" viewBox="0 0 60 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M-4 14C24 24 4 48 26 62C46 74 10 92 28 108C44 120 14 134 26 148C36 160 12 172 20 186C28 198 8 208 14 222C20 232 32 240 22 254C14 264 24 274 14 286C6 296 16 306 6 318C-2 326 8 336 -2 348C-8 356 2 364 -8 376" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    </svg>
-    <svg class="deco-blob-left c-teal" width="235" height="410" viewBox="0 0 235 410" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M140,20 C195,5 240,60 220,125 C205,175 250,190 245,255 C240,320 180,315 190,375 C198,430 130,455 85,420 C45,388 65,335 95,300 C120,270 55,245 65,180 C73,115 95,32 140,20 Z" fill="currentColor"/>
-    </svg>
-    <svg class="deco-squiggle-right" width="60" height="420" viewBox="0 0 60 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M-4 14C24 24 4 48 26 62C46 74 10 92 28 108C44 120 14 134 26 148C36 160 12 172 20 186C28 198 8 208 14 222C20 232 32 240 22 254C14 264 24 274 14 286C6 296 16 306 6 318C-2 326 8 336 -2 348C-8 356 2 364 -8 376" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    </svg>
-    <svg class="deco-blob c-teal" width="235" height="410" viewBox="0 0 235 410" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M140,20 C195,5 240,60 220,125 C205,175 250,190 245,255 C240,320 180,315 190,375 C198,430 130,455 85,420 C45,388 65,335 95,300 C120,270 55,245 65,180 C73,115 95,32 140,20 Z" fill="currentColor"/>
-    </svg>
+  <section id="experience" class="section">
     <div class="section-inner">
       <div class="section-head">
-        <span class="tag-dot"></span>
+        <p class="eyebrow">Where I've worked</p>
+        <h2>Experience</h2>
+      </div>
+      <div class="log">
+        <div class="log-entry">
+          <div class="log-body">
+            <h3>Business Operations Intern</h3>
+            <p class="log-org-line">Kyoto Solutions</p>
+            <ul>
+              <li>Support end-to-end IT solution requirements across hardware, software, networking, cybersecurity, cloud, and infrastructure, aligning products with customer needs.</li>
+              <li>Source and evaluate IT products against technical specifications, compatibility, licensing, and pricing.</li>
+              <li>Support licensing for Microsoft 365, VMware, Veeam, Adobe, Cisco, Fortinet, and Aruba.</li>
+              <li>Prepare IT proposals, quotations, purchase orders, and project acceptance forms, managing vendor documentation.</li>
+              <li>Analyze vendor pricing against customer requirements, applying margins by customer type.</li>
+            </ul>
+          </div>
+          <div class="log-meta">
+            <span class="log-date">09/2026 — Present</span>
+            <span class="log-loc">Dubai, UAE</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education" class="section alt">
+    <div class="section-inner">
+      <div class="section-head">
+        <p class="eyebrow">Where I studied</p>
         <h2>Education</h2>
       </div>
       <div class="log">
@@ -319,22 +263,10 @@
     </div>
   </section>
 
-  <section id="certifications" class="section alt">
-    <svg class="deco-squiggle" width="60" height="420" viewBox="0 0 60 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M-4 18C30 8 4 44 32 58C58 70 8 88 34 104C56 116 12 132 32 148C48 160 16 174 30 188C42 200 12 210 22 224C30 234 8 244 16 256C22 264 36 272 24 284C14 292 26 302 14 312C4 320 16 330 4 340C-6 348 4 356 -8 366" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    </svg>
-    <svg class="deco-blob-left c-purple" width="255" height="450" viewBox="0 0 255 450" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M150,10 C205,0 245,55 230,120 C218,172 165,155 175,225 C185,300 250,300 240,365 C230,425 150,460 95,430 C45,403 55,340 90,305 C120,275 55,255 60,190 C65,110 100,20 150,10 Z" fill="currentColor"/>
-    </svg>
-    <svg class="deco-squiggle-right" width="60" height="420" viewBox="0 0 60 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M-4 18C30 8 4 44 32 58C58 70 8 88 34 104C56 116 12 132 32 148C48 160 16 174 30 188C42 200 12 210 22 224C30 234 8 244 16 256C22 264 36 272 24 284C14 292 26 302 14 312C4 320 16 330 4 340C-6 348 4 356 -8 366" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    </svg>
-    <svg class="deco-blob c-purple" width="255" height="450" viewBox="0 0 255 450" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M150,10 C205,0 245,55 230,120 C218,172 165,155 175,225 C185,300 250,300 240,365 C230,425 150,460 95,430 C45,403 55,340 90,305 C120,275 55,255 60,190 C65,110 100,20 150,10 Z" fill="currentColor"/>
-    </svg>
+  <section id="certifications" class="section">
     <div class="section-inner">
       <div class="section-head">
-        <span class="tag-dot"></span>
+        <p class="eyebrow">Credentials</p>
         <h2>Certifications</h2>
       </div>
       <div class="log">
@@ -378,22 +310,10 @@
     </div>
   </section>
 
-  <section id="languages" class="section">
-    <svg class="deco-squiggle" width="60" height="420" viewBox="0 0 60 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M-4 22C22 12 0 46 26 58C50 68 6 84 30 98C50 110 14 122 28 136C40 148 12 158 22 172C30 184 8 194 14 208C20 218 32 226 22 240C14 250 24 260 14 272C6 282 16 292 6 304C-2 312 6 320 -4 332C-10 340 0 348 -10 360" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    </svg>
-    <svg class="deco-blob-left c-coral" width="245" height="420" viewBox="0 0 245 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M120,15 C175,-10 235,35 225,100 C218,150 165,140 175,195 C188,255 245,260 235,320 C225,385 160,420 110,395 C65,373 75,320 100,290 C130,255 60,230 65,175 C70,110 75,35 120,15 Z" fill="currentColor"/>
-    </svg>
-    <svg class="deco-squiggle-right" width="60" height="420" viewBox="0 0 60 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M-4 22C22 12 0 46 26 58C50 68 6 84 30 98C50 110 14 122 28 136C40 148 12 158 22 172C30 184 8 194 14 208C20 218 32 226 22 240C14 250 24 260 14 272C6 282 16 292 6 304C-2 312 6 320 -4 332C-10 340 0 348 -10 360" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    </svg>
-    <svg class="deco-blob c-coral" width="245" height="420" viewBox="0 0 245 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M120,15 C175,-10 235,35 225,100 C218,150 165,140 175,195 C188,255 245,260 235,320 C225,385 160,420 110,395 C65,373 75,320 100,290 C130,255 60,230 65,175 C70,110 75,35 120,15 Z" fill="currentColor"/>
-    </svg>
+  <section id="languages" class="section alt">
     <div class="section-inner">
       <div class="section-head">
-        <span class="tag-dot"></span>
+        <p class="eyebrow">How I communicate</p>
         <h2>Languages</h2>
       </div>
       <ul class="lang-list">
@@ -407,18 +327,6 @@
 </main>
 
 <footer id="contact" class="footer">
-  <svg class="deco-squiggle on-dark" width="60" height="420" viewBox="0 0 60 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <path d="M-4 26C28 14 2 48 30 62C56 74 8 92 32 108C54 122 12 136 30 150C46 162 14 174 26 188C36 200 10 212 18 226C24 238 4 248 10 262C14 272 30 280 18 294C8 304 20 316 8 328C-2 338 10 348 -4 360C-12 368 0 378 -12 390" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-  </svg>
-  <svg class="deco-blob-left on-dark" width="260" height="460" viewBox="0 0 260 460" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <path d="M140,20 C195,5 240,60 220,125 C205,175 250,190 245,255 C240,320 180,315 190,375 C198,430 130,455 85,420 C45,388 65,335 95,300 C120,270 55,245 65,180 C73,115 95,32 140,20 Z" fill="currentColor"/>
-  </svg>
-  <svg class="deco-squiggle-right on-dark" width="60" height="420" viewBox="0 0 60 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <path d="M-4 26C28 14 2 48 30 62C56 74 8 92 32 108C54 122 12 136 30 150C46 162 14 174 26 188C36 200 10 212 18 226C24 238 4 248 10 262C14 272 30 280 18 294C8 304 20 316 8 328C-2 338 10 348 -4 360C-12 368 0 378 -12 390" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-  </svg>
-  <svg class="deco-blob on-dark" width="260" height="460" viewBox="0 0 260 460" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <path d="M140,20 C195,5 240,60 220,125 C205,175 250,190 245,255 C240,320 180,315 190,375 C198,430 130,455 85,420 C45,388 65,335 95,300 C120,270 55,245 65,180 C73,115 95,32 140,20 Z" fill="currentColor"/>
-  </svg>
   <div class="footer-inner">
     <div class="footer-main">
       <h2>Let's talk</h2>
@@ -432,7 +340,6 @@
   </div>
   <div class="footer-bottom">
     <span>© <span id="year"></span> Eleina Ann</span>
-    <span>Built with HTML, CSS &amp; JS</span>
   </div>
 </footer>
 
