@@ -20,20 +20,17 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  padding: 24px 16px;
-  background: #1d1411;
+  padding: 0 16px;
+  background: radial-gradient(circle at 70% 0%, #bd5f31 0%, var(--bg) 45%, var(--bg-deep) 100%) fixed;
   font-family: var(--sans);
   color: var(--cream);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
 
-/* the phone-like rounded page */
 .page {
   max-width: 1080px;
   margin: 0 auto;
-  background: radial-gradient(circle at 70% 8%, #bd5f31 0%, var(--bg) 45%, var(--bg-deep) 100%);
-  border-radius: 40px;
   padding: 22px 40px 28px;
   overflow: hidden;
 }
@@ -74,7 +71,6 @@ ul { margin: 0; padding: 0; list-style: none; }
 /* ---------- Hero ---------- */
 .hero { display: grid; grid-template-columns: 1fr 1.1fr; gap: 32px; align-items: center; padding: 36px 0 44px; }
 .hero h1 { font-size: clamp(2.6rem, 6vw, 4.2rem); font-weight: 600; letter-spacing: 0.01em; text-transform: uppercase; }
-.hero h1 em { font-style: normal; color: var(--peach); }
 .hero p { max-width: 340px; margin: 22px 0 26px; font-size: 0.95rem; color: var(--cream); }
 
 .btn { display: inline-block; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; background: var(--peach); color: var(--ink); padding: 12px 24px; border-radius: 8px; transition: background 0.15s; }
@@ -168,7 +164,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
-  .page { padding: 18px 22px 24px; border-radius: 32px; }
+  .page { padding: 18px 22px 24px; }
   .hero { grid-template-columns: 1fr; }
   .hero-visual { min-height: 280px; }
   .cards { grid-template-columns: 1fr; }
@@ -185,3 +181,20 @@ ul { margin: 0; padding: 0; list-style: none; }
   .log-entry { grid-template-columns: 1fr; gap: 14px; }
   .log-meta { align-items: flex-start; text-align: left; }
 }
+
+/* ---------- Update: terracotta site, lighter boxes, About under name ---------- */
+.hero { padding-bottom: 8px; }
+.about-main .section { padding-top: 24px; }
+.about-main + .strip { margin-top: 56px; }
+
+.project { background: var(--peach); color: var(--ink); border: none; }
+.project[data-open="true"] { background: var(--peach-soft); }
+.project-head h3 { color: var(--ink); }
+.project-sub { color: var(--bg-deep); }
+.project-icon { color: var(--ink); }
+.project-body li { color: var(--ink); }
+.project-body li::before { background: var(--bg); }
+
+.lang-list { background: var(--peach); color: var(--ink); border: none; }
+.lang-list li { border-top-color: rgba(74,32,15,0.2); }
+.lang-level { color: var(--bg-deep); }
